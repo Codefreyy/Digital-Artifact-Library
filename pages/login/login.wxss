@@ -1,0 +1,80 @@
+page {
+  padding: 0;
+  background-color: #fff;
+}
+
+/* navbar */
+
+.nav-gation {
+  margin-bottom: 25rpx;
+  background-color: #FDF6E1;
+}
+
+.nav-height {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* login/register */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80rpx 0;
+}
+
+.t-avatar {
+  background-color: #DD9A04 !important;
+}
+
+.t-icon-user {
+  color: #ffffff;
+}
+
+.login-register {
+  background-color: #fff;
+  padding: 40rpx;
+}
+
+.input .user,
+.input .password,
+.input .password-require {
+  height: 55rpx;
+  border: 1px solid #EBEBEB;
+  border-radius: 30rpx;
+  padding: 10rpx 30rpx;
+  font-size: 25rpx;
+  margin-bottom: 30rpx;
+}
+
+.input .password,
+.input .password-require {
+  position: relative;
+}
+
+.input .password .browse,
+.input .password-require .browse {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translate(-50%, -50%);
+}
+
+.toRegister {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 25rpx;
+  color: #DD9A04;
+}
+
+.btn {
+  margin-top: 30rpx;
+}
+
+.loginBtn {
+  background-color: #DD9A04 !important;
+  color: #ffffff !important;
+  border-radius: 50rpx !important;
+}

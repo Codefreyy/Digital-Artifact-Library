@@ -1,0 +1,120 @@
+<view class="home">
+  <!-- navbar -->
+  <view class="nav-gation">
+    <view class="nav-top" style="height: {{top}}px;">
+    </view>
+    <view class="nav-height" style="height: {{height}}px;">
+      <view class="left" style="display: flex; align-items: center;">
+        <image class="imgs" bindtap="toMine" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNjc4NzYxNTYyMjcxIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEzNDYzIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik01MTMuMDIzMzA2IDQwMS4wNjY0NDVtLTE0OS4xNTgxMzUgMGExNDkuMTU4MTM1IDE0OS4xNTgxMzUgMCAxIDAgMjk4LjMxNjI3IDAgMTQ5LjE1ODEzNSAxNDkuMTU4MTM1IDAgMSAwLTI5OC4zMTYyNyAwWiIgcC1pZD0iMTM0NjQiIGZpbGw9IiNERTlBMDUiPjwvcGF0aD48cGF0aCBkPSJNNTEzLjAyMzMwNiA2NS40NTk4NzRjLTI0Ny4xMzM1NjMgMC00NDcuNDc0NDA0IDIwMC4zNDA4NDEtNDQ3LjQ3NDQwNCA0NDcuNDc0NDA1UzI2NS44ODk3NDMgOTYwLjQwODY4MyA1MTMuMDIzMzA2IDk2MC40MDg2ODNzNDQ3LjQ3NDQwNC0yMDAuMzQwODQxIDQ0Ny40NzQ0MDUtNDQ3LjQ3NDQwNFM3NjAuMTU1ODQ2IDY1LjQ1OTg3NCA1MTMuMDIzMzA2IDY1LjQ1OTg3NHogbTI3Mi4yMDI1MTkgNzU0LjMzMTE4OGM0Ljg4NDI0LTIwLjY5ODQxNCA3LjQ2ODA4OS00Mi4yODQwMzUgNy40NjgwODktNjQuNDc0NDMxIDAtMTAwLjg4MzY2NS01My40MTY1ODQtMTg5LjI5MjIwNC0xMzMuNTA4NzE0LTIzOC40ODQ1NzktMzQuMTUxODIxIDQzLjA2Mjc3MS04Ni45MzE5MDggNzAuNjgxODA2LTE0Ni4xNjE4OTQgNzAuNjgxODA2cy0xMTIuMDEwMDczLTI3LjYxOTAzNC0xNDYuMTYyOTE3LTcwLjY4MDc4M0MyODYuNzY3MjM2IDU2Ni4wMjQ0MjcgMjMzLjM1MTY3NiA2NTQuNDMyOTY2IDIzMy4zNTE2NzYgNzU1LjMxNjYzMWMwIDIyLjE4OTM3MiAyLjU4Mzg0OCA0My43NzYwMTYgNy40NjgwODggNjQuNDc0NDMxLTg0LjY0Mzc5Ni03NS4xNDAzNTEtMTM3Ljk4MTU4NC0xODQuNzY5MTktMTM3Ljk4MTU4NC0zMDYuODU1NzYgMC0yMjYuNTM4NTAzIDE4My42NDU2LTQxMC4xODUxMjYgNDEwLjE4NTEyNi00MTAuMTg1MTI3UzkyMy4yMDc0MDkgMjg2LjM5NTc3NiA5MjMuMjA3NDA5IDUxMi45MzQyNzljMCAxMjIuMDg2NTY5LTUzLjMzNjc2NiAyMzEuNzE2NDMyLTEzNy45ODE1ODQgMzA2Ljg1Njc4M3oiIHAtaWQ9IjEzNDY1IiBmaWxsPSIjREU5QTA1Ij48L3BhdGg+PC9zdmc+" mode="aspectFill" />
+      </view>
+      <view class="center">
+        <text>数字文物库</text>
+      </view>
+      <view class="right" style="width: 55rpx;height: 55rpx;">
+      </view>
+    </view>
+  </view>
+
+  <!-- search -->
+  <view class="search-warpper">
+    <view class="search">
+      <!-- 筛选框 -->
+      <view class="filter" bindtap="filterTap">
+        <text class="text">筛选</text>
+        <t-icon name="{{filterIconName}}" color="#DD9A04" size="38rpx" />
+      </view>
+      <!-- 名称/编号 -->
+      <view class="nameOrNo" bindtap="nameOrNoTap">
+        <text class="text">{{nameName}}</text>
+        <t-icon name="{{nameIconName}}" color="#DD9A04" size="38rpx" />
+      </view>
+      <!-- 搜索框 -->
+      <view class="search-box">
+        <input value="{{keyword}}" type="text" placeholder="请输入" bindinput="input" bindfocus="focus" />
+        <t-icon name="search" size="38rpx" color="#808080" />
+      </view>
+    </view>
+
+    <!-- 下拉菜单 -->
+    <view class="downMenu" wx:if="{{isShowFilterDownMenu || isShownameOrNoDownMenu}}" style="width: {{isShowFilterDownMenu ? '100%' : '20%'}}; left: {{isShowFilterDownMenu ? '0' : '20%'}};">
+      <view class="filter-downMenu" data-class="downMenu" wx:if="{{isShowFilterDownMenu}}">
+        <view class="category-card">
+          <text class="title">类别</text>
+          <view class="category">
+            <view class="tag" wx:for="{{filterListObj.category}}" wx:key="index" bindtap="categoryTagTap" data-item="{{item}}" data-index="{{index}}" style="border: {{item.checkd ? 'none' : '1px solid #808080'}}; color:{{item.checkd ? '#ffffff' : '#808080'}}; background-color: {{item.checkd ? '#DD9A04' : '#F8F9F8'}}">
+              {{item.text}}
+            </view>
+          </view>
+        </view>
+
+        <view class="dynasty-card">
+          <text class="title">朝代</text>
+          <view class="dynasty">
+            <view class="tag" wx:for="{{filterListObj.dynasty}}" wx:key="index" bindtap="dynastyTagTap" data-item="{{item}}" data-index="{{index}}" style="border: {{item.checkd ? 'none' : '1px solid #808080'}}; color:{{item.checkd ? '#ffffff' : '#808080'}}; background-color: {{item.checkd ? '#DD9A04' : '#F8F9F8'}}">
+              {{item.text}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="nameOrNo-downMenu" data-class="downMenu" wx:if="{{isShownameOrNoDownMenu}}">
+        <text wx:for="{{nameList}}" wx:key="index" bindtap="nameOrNoSelectItemTap" data-item="{{item}}" style="color: {{item.checkd ? '#DD9A04' : '#000000'}}">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- list -->
+  <view class="result-list">
+    <view class="list-box">
+      <view class="header">
+        <view class="title">
+          <text class="prefix-number">共</text>
+          <text class="number">{{artifectTotal}}</text>
+          <text class="suffix-number">件藏品</text>
+        </view>
+        <view class="toggle">
+          <view class="custom-color">
+            <t-switch defaultValue="{{true}}" label="{{['文', '图']}}" slot="note" size="small" bind:change="toggleImg" />
+          </view>
+        </view>
+      </view>
+
+      <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" class="list" style="height: calc(100vh - {{top}}px - {{height}}px - 60rpx - 25rpx - 25rpx - 20rpx - 27px - 20rpx);" bindscroll="onScroll">
+        <view class="list-item" wx:for="{{artifectList}}" wx:key="index" bindtap="toDetail" data-index="{{index}}">
+          <view class="item-head" wx:if="{{isImg}}">
+            <t-image t-class="t-img" src="{{item.image[0]}}" mode="aspectFill" width="100%" height="150" aria-label="一个放置在墙角的黄色行李箱" />
+          </view>
+          <view class="item-foot">
+            <view class="foot-left">
+              <view class="title">
+                <view class="flag-3D" wx:if="{{item.digitalModel}}">
+                  3D
+                </view>
+                <text class="text">{{item.title}}</text>
+              </view>
+              <view class="detail">
+                <text class="dynasty">{{item.ear}}</text>
+                <view class="division">
+                  ｜
+                </view>
+                <view class="No">
+                  {{item.No}}
+                </view>
+              </view>
+            </view>
+            <view class="foot-right">
+              <t-icon name="{{item.isLike ? 'heart-filled' : 'heart'}}" color="{{!item.isLike ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{item._id}}" data-index="{{index}}" catchtap="like" />
+              <t-icon name="{{item.isCollect ? 'star-filled' : 'star'}}" color="{{!item.isCollect ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{item._id}}" data-index="{{index}}" catchtap="collect" />
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+    </view>
+  </view>
+
+  <!-- 返回顶部 -->
+  <t-back-top wx:if="{{backTopVisible}}" theme="round" text="顶部" t-class-icon="backtop-icon" t-class-text="backtop-text" bind:to-top="onToTop" />
+
+  <!-- 对话框 -->
+  <t-dialog t-class-confirm="confirmBtn" id="t-dialog" />
+</view>

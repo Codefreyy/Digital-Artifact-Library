@@ -1,0 +1,49 @@
+<view class="login">
+  <!-- navbar -->
+  <view class="nav-gation">
+    <view class="nav-top" style="height: {{top}}px;">
+    </view>
+    <view class="nav-height" style="height: {{height}}px;">
+      <view class="left" style="display: flex; align-items: center;">
+        <t-icon name="chevron-left" size="48rpx" color="#DD9A04" bind:click="back" />
+      </view>
+      <view class="center">
+        <text wx:if="{{toLogin}}">登录</text>
+        <text wx:else>注册</text>
+      </view>
+      <view class="right" style="width: 55rpx;height: 55rpx;">
+      </view>
+    </view>
+  </view>
+
+  <!-- login/register -->
+  <view class="login-register">
+    <view class="avatar">
+      <t-avatar class="avatar-example" icon="user" t-class-content="external-class-content" />
+    </view>
+    <view class="input">
+      <view class="user">
+        <input value="{{userForm.username}}" bindinput="inputUserName" type="text" maxlength="15" placeholder="用户名" style="height: 60rpx; width: 80%;" />
+      </view>
+      <view class="password">
+        <input value="{{userForm.password}}" bindinput="inputPassword" type="{{inputType}}" maxlength="21" placeholder="密码" style="height: 60rpx; width: 80%;" />
+        <t-icon class="browse" name="{{browseName}}" size="38rpx" color="#DD9A04" catchtap="passwordIconTap" />
+      </view>
+      <view class="password-require" wx:if="{{!toLogin}}">
+        <input value="{{userForm.require}}" bindinput="inputPasswordRequire" type="{{inputConfirmType}}" maxlength="21" placeholder="再次确认密码" style="height: 60rpx;width: 80%;" />
+        <t-icon class="browse" name="{{browseConfirmName}}" size="38rpx" color="#DD9A04" catchtap="passwordConfirmIconTap" />
+      </view>
+      <view class="toRegister">
+        <text bindtap="toRegister" wx:if="{{toLogin}}">没有账户？去注册</text>
+        <text bindtap="toLogin" wx:else>已有账户？去登录</text>
+      </view>
+    </view>
+    <view class="btn">
+      <t-button t-class="loginBtn" block wx:if="{{toLogin}}" bindtap="login">登录</t-button>
+      <t-button t-class="loginBtn" block wx:else bindtap="register">注册</t-button>
+    </view>
+  </view>
+
+  <!-- 轻提示 -->
+  <t-toast id="t-toast" />
+</view>

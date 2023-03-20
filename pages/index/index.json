@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-back-top": "tdesign-miniprogram/back-top/back-top",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": true
+}

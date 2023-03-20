@@ -1,0 +1,132 @@
+/* navbar */
+.imgs {
+  height: 55rpx;
+  width: 55rpx;
+}
+
+.nav-gation {
+  margin-bottom: 25rpx;
+}
+
+.nav-height {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* user */
+.card {
+  width: 100%;
+  margin-top: 75rpx;
+  border-radius: 40rpx;
+  background-color: #FDFBF5;
+  padding: 20rpx 40rpx;
+  font-size: 25rpx;
+  box-sizing: border-box;
+  box-shadow: 0px 10rpx 20rpx -20rpx gray;
+}
+
+.user-card .has-login,
+.user-card .not-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100rpx;
+}
+
+.user-card .not-login {
+  justify-content: center;
+}
+
+.loginBtn {
+  background-color: #DD9A04 !important;
+  color: #ffffff !important;
+  border-radius: 50rpx !important;
+}
+
+.name {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  color: #DD9A04;
+}
+
+.t-avatar {
+  background-color: #DD9A04 !important;
+}
+
+.t-icon-user {
+  color: #ffffff;
+}
+
+/* list */
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  height: 90rpx;
+  box-shadow: 0px 10rpx 20rpx -20rpx gray;
+}
+
+.list-item {
+  margin-bottom: 30rpx;
+}
+
+.list-item:nth-last-child(1) {
+  margin: 0;
+}
+
+.item-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15rpx;
+}
+
+.foot-left .title,
+.foot-left .detail {
+  display: flex;
+  align-items: center;
+
+}
+
+.flag-3D {
+  padding: 0 15rpx;
+  border-radius: 20rpx;
+  background-color: #DD9A04;
+  color: #ffffff;
+  font-weight: 700;
+  margin-right: 10rpx;
+}
+
+.title .text {
+  color: #DD9A04;
+  font-weight: 700;
+}
+
+.detail {
+  margin-top: 5rpx;
+  color: #818181;
+}
+
+.division {
+  margin: 0 7rpx;
+}
+
+.foot-right {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.like-list,
+.collect-list {
+  overflow-y: auto;
+}

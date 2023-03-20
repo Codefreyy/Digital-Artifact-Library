@@ -1,0 +1,111 @@
+<view class="mine">
+  <!-- navbar -->
+  <view class="nav-gation">
+    <view class="nav-top" style="height: {{top}}px;">
+    </view>
+    <view class="nav-height" style="height: {{height}}px;">
+      <view class="left" style="display: flex; align-items: center;">
+        <t-icon name="chevron-left" size="48rpx" color="#DD9A04" bind:click="back" />
+      </view>
+      <view class="center">
+        <text>我的</text>
+      </view>
+      <view class="right" style="width: 55rpx;height: 55rpx;">
+      </view>
+    </view>
+  </view>
+
+  <!-- user -->
+  <view class="card user-card">
+    <view class="has-login" wx:if="{{isLogin}}">
+      <view class="card-left">
+        <t-avatar class="avatar-example" icon="user" t-class-content="external-class-content" />
+      </view>
+      <view class="card-center">
+        <view class="name">
+          <text wx:if="{{!isEdit}}">{{userInfo.username}}</text>
+          <input wx:else type="text" maxlength="15" value="{{newInputValue}}" bindinput="inputTap" auto-focus />
+        </view>
+      </view>
+      <view class="card-right">
+        <view class="edit">
+          <text bindtap="cancel" wx:if="{{isEdit}}">取消</text>
+          <text bindtap="confirm" wx:if="{{isEdit}}">确认</text>
+          <text bindtap="edit" wx:else>修改</text>
+          <text bindtap="loginout">退出</text>
+        </view>
+      </view>
+    </view>
+    <view class="not-login" wx:else>
+      <t-button t-class="loginBtn" bindtap="toLogin">登录</t-button>
+    </view>
+  </view>
+
+  <!-- like -->
+  <view class="card like-card">
+    <view class="card-title">
+      <text bindtap="likeTap" style="color: {{isShowlikeCard ? '#DD9A04':'#000000'}};">我的喜欢</text>
+      <text>|</text>
+      <text bindtap="collectTap" style="color: {{isShowlikeCard ? '#000000':'#DD9A04'}};">我的收藏</text>
+    </view>
+    <view class="has-login" wx:if="{{isLogin}}">
+      <view class="like-list" wx:if="{{isShowlikeCard}}" style="height: calc(100vh - {{top}}px - {{height}}px - 75rpx - 60rpx - 78px - 75rpx - 60rpx - 17px);">
+        <view class="list-item" wx:for="{{userInfo.like}}" wx:key="index" bindtap="toDetail" data-index="{{index}}">
+          <view class="item-foot">
+            <view class="foot-left">
+              <view class="title">
+                <view class="flag-3D" wx:if="{{item.digitalModel}}">
+                  3D
+                </view>
+                <text class="text">{{item.title}}</text>
+              </view>
+              <view class="detail">
+                <text class="dynasty">{{item.ear}}</text>
+                <view class="division">
+                  ｜
+                </view>
+                <view class="No">
+                  {{item.No}}
+                </view>
+              </view>
+            </view>
+            <view class="foot-right">
+              <!-- <t-icon name="{{item.isLike ? 'heart-filled' : 'heart'}}" color="{{!item.isLike ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{item._id}}" data-index="{{index}}" catchtap="like" /> -->
+            </view>
+          </view>
+        </view>
+        <t-empty wx:if="{{userInfo.like.length === 0}}" description="快去看看文物吧～" />
+      </view>
+      <view class="collect-list" wx:else style="height: calc(100vh - {{top}}px - {{height}}px - 75rpx - 60rpx - 78px - 75rpx - 60rpx - 17px);">
+        <view class="list-item" wx:for="{{userInfo.collection}}" bindtap="toDetail" data-index="{{index}}" wx:key="index">
+          <view class="item-foot">
+            <view class="foot-left">
+              <view class="title">
+                <view class="flag-3D" wx:if="{{item.digitalModel}}">
+                  3D
+                </view>
+                <text class="text">{{item.title}}</text>
+              </view>
+              <view class="detail">
+                <text class="dynasty">{{item.ear}}</text>
+                <view class="division">
+                  ｜
+                </view>
+                <view class="No">
+                  {{item.No}}
+                </view>
+              </view>
+            </view>
+            <view class="foot-right">
+              <!-- <t-icon name="{{item.isCollect ? 'star-filled' : 'star'}}" color="{{!item.isCollect ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{item._id}}" catchtap="collect" /> -->
+            </view>
+          </view>
+        </view>
+        <t-empty wx:if="{{userInfo.collection.length === 0}}" description="快去看看文物吧～" />
+      </view>
+    </view>
+    <view class="not-login" wx:else style="display: flex; align-items: center; justify-content: center; height: calc(100vh - {{top}}px - {{height}}px - 75rpx - 60rpx - 78px - 75rpx - 60rpx - 17px);">
+      <t-empty icon="info-circle-filled" description="请先登录哦～" />
+    </view>
+  </view>
+</view>

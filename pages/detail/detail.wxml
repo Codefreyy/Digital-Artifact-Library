@@ -1,0 +1,83 @@
+<view class="detail">
+  <!-- navbar -->
+  <view class="nav-gation">
+    <view class="nav-top" style="height: {{top}}px;">
+    </view>
+    <view class="nav-height" style="height: {{height}}px;">
+      <view class="left" style="display: flex; align-items: center;">
+        <t-icon name="chevron-left" size="48rpx" color="#DD9A04" bind:click="back" />
+      </view>
+      <view class="right" style="width: 55rpx;height: 55rpx;">
+      </view>
+    </view>
+  </view>
+  <!-- 轮播图swiper -->
+  <view class="swiper">
+    <t-swiper current="{{ current }}" autoplay="{{ autoplay }}" duration="{{ 500 }}" interval="{{ 5000 }}" navigation="{{ { type: 'dots-bar' } }}" list="{{artifectDetailInfo.image}}" t-class-nav="card-theme-nav" height="240" width="100%" bind:click="previewImage" data-img-list="{{artifectDetailInfo.image}}" data-index="{{current}}" bind:change="onChange" bindlongpress="longpress" />
+    <view class="view3D" bindtap="view3DTap" data-digital-model="{{artifectDetailInfo.digitalModel}}" data-digital-model-mtl="{{artifectDetailInfo.digitalModelMtl}}" wx:if="{{artifectDetailInfo.digitalModel}}">
+      <t-icon name="layers" size="38rpx" color="#DD9A04" />
+      <text>3D</text>
+    </view>
+  </view>
+
+  <!-- info -->
+  <view class="info-card" style="height: calc(100vh - 240px);">
+    <view class="info-card-head">
+      <view class="head-left">
+        <view class="title">
+          <view class="flag-3D" wx:if="{{artifectDetailInfo.digitalModel}}">
+            3D
+          </view>
+          <text class="text">{{artifectDetailInfo.title}}</text>
+        </view>
+        <view class="detail">
+          <text class="dynasty">{{artifectDetailInfo.ear}}</text>
+          <view class="division">
+            ｜
+          </view>
+          <view class="No">
+            {{artifectDetailInfo.No}}
+          </view>
+        </view>
+      </view>
+      <view class="head-right">
+        <t-icon name="{{artifectDetailInfo.isLike ? 'heart-filled' : 'heart'}}" color="{{!artifectDetailInfo.isLike ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="like" />
+        <t-icon name="{{artifectDetailInfo.isCollect ? 'star-filled' : 'star'}}" color="{{!artifectDetailInfo.isCollect ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="collect" />
+      </view>
+    </view>
+    <view class="info-card-body">
+      <view class="info-detail" style="max-height: 400rpx; overflow-y: auto;">
+        {{artifectDetailInfo.desc}}
+      </view>
+    </view>
+    <view class="info-card-foot">
+      <view class="tag">
+        <text class="label">分类</text>
+        <text>{{artifectDetailInfo.type}}</text>
+      </view>
+      <view class="tag">
+        <text class="label">年代</text>
+        <text>{{artifectDetailInfo.ear}}</text>
+      </view>
+      <view class="tag">
+        <text class="label">分享</text>
+        <view style="display: flex; align-items: center;">
+          <view class="wx" bindtap="showSuccessToast">
+            <image class="wx-icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNjc4NzA5MzIzNzA1IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjI4MDkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTMzNy4zODcyODMgMzQxLjgyNjU5Yy0xNy43NTcyMjUgMC0zNS41MTQ0NTEgMTEuODM4MTUtMzUuNTE0NDUxIDI5LjU5NTM3NXMxNy43NTcyMjUgMjkuNTk1Mzc2IDM1LjUxNDQ1MSAyOS41OTUzNzYgMjkuNTk1Mzc2LTExLjgzODE1IDI5LjU5NTM3Ni0yOS41OTUzNzZjMC0xOC40OTcxMS0xMS44MzgxNS0yOS41OTUzNzYtMjkuNTk1Mzc2LTI5LjU5NTM3NXpNNTc3Ljg0OTcxMSA1MTMuNDc5NzY5Yy0xMS44MzgxNSAwLTIyLjkzNjQxNiAxMi41NzgwMzUtMjIuOTM2NDE2IDIzLjY3NjMgMCAxMi41NzgwMzUgMTEuODM4MTUgMjMuNjc2MzAxIDIyLjkzNjQxNiAyMy42NzYzMDEgMTcuNzU3MjI1IDAgMjkuNTk1Mzc2LTExLjgzODE1IDI5LjU5NTM3Ni0yMy42NzYzMDFzLTExLjgzODE1LTIzLjY3NjMwMS0yOS41OTUzNzYtMjMuNjc2M3pNNTAxLjY0MTYxOCA0MDEuMDE3MzQxYzE3Ljc1NzIyNSAwIDI5LjU5NTM3Ni0xMi41NzgwMzUgMjkuNTk1Mzc2LTI5LjU5NTM3NiAwLTE3Ljc1NzIyNS0xMS44MzgxNS0yOS41OTUzNzYtMjkuNTk1Mzc2LTI5LjU5NTM3NXMtMzUuNTE0NDUxIDExLjgzODE1LTM1LjUxNDQ1IDI5LjU5NTM3NSAxNy43NTcyMjUgMjkuNTk1Mzc2IDM1LjUxNDQ1IDI5LjU5NTM3NnpNNzA2LjU4OTU5NSA1MTMuNDc5NzY5Yy0xMS44MzgxNSAwLTIyLjkzNjQxNiAxMi41NzgwMzUtMjIuOTM2NDE2IDIzLjY3NjMgMCAxMi41NzgwMzUgMTEuODM4MTUgMjMuNjc2MzAxIDIyLjkzNjQxNiAyMy42NzYzMDEgMTcuNzU3MjI1IDAgMjkuNTk1Mzc2LTExLjgzODE1IDI5LjU5NTM3Ni0yMy42NzYzMDFzLTExLjgzODE1LTIzLjY3NjMwMS0yOS41OTUzNzYtMjMuNjc2M3oiIGZpbGw9IiMyOEM0NDUiIHAtaWQ9IjI4MTAiPjwvcGF0aD48cGF0aCBkPSJNNTEwLjUyMDIzMSAyLjk1OTUzOEMyMjguNjI0Mjc3IDIuOTU5NTM4IDAgMjMxLjU4MzgxNSAwIDUxMy40Nzk3NjlzMjI4LjYyNDI3NyA1MTAuNTIwMjMxIDUxMC41MjAyMzEgNTEwLjUyMDIzMSA1MTAuNTIwMjMxLTIyOC42MjQyNzcgNTEwLjUyMDIzMS01MTAuNTIwMjMxLTIyOC42MjQyNzctNTEwLjUyMDIzMS01MTAuNTIwMjMxLTUxMC41MjAyMzF6TTQxMy41OTUzNzYgNjQ0LjQzOTMwNmMtMjkuNTk1Mzc2IDAtNTMuMjcxNjc2LTUuOTE5MDc1LTgxLjM4NzI4NC0xMi41NzgwMzRsLTgxLjM4NzI4MyA0MS40MzM1MjYgMjIuOTM2NDE2LTcxLjc2ODc4NmMtNTguNDUwODY3LTQxLjQzMzUyNi05My45NjUzMTgtOTUuNDQ1MDg3LTkzLjk2NTMxNy0xNTkuODE1MDI5IDAtMTEzLjIwMjMxMiAxMDUuODAzNDY4LTIwMS45ODg0MzkgMjMzLjgwMzQ2OC0yMDEuOTg4NDQgMTE0LjY4MjA4MSAwIDIxNi4wNDYyNDMgNzEuMDI4OTAyIDIzNi4wMjMxMjEgMTY2LjQ3Mzk4OS03LjM5ODg0NC0wLjczOTg4NC0xNC43OTc2ODgtMS40Nzk3NjktMjIuMTk2NTMyLTEuNDc5NzY5LTExMC45ODI2NTkgMS40Nzk3NjktMTk4LjI4OTAxNyA4NS4wODY3MDUtMTk4LjI4OTAxNyAxODguNjcwNTIgMCAxNy4wMTczNDEgMi45NTk1MzggMzMuMjk0Nzk4IDcuMzk4ODQ0IDQ5LjU3MjI1NS03LjM5ODg0NCAwLjczOTg4NC0xNS41Mzc1NzIgMS40Nzk3NjktMjIuOTM2NDE2IDEuNDc5NzY4eiBtMzQ2LjI2NTg5NiA4Mi44NjcwNTJsMTcuNzU3MjI1IDU5LjE5MDc1Mi02My42MzAwNTgtMzUuNTE0NDUxYy0yMi45MzY0MTYgNS45MTkwNzUtNDYuNjEyNzE3IDExLjgzODE1LTcwLjI4OTAxNyAxMS44MzgxNS0xMTEuNzIyNTQzIDAtMTk5Ljc2ODc4Ni03Ni45NDc5NzctMTk5Ljc2ODc4Ni0xNzIuMzkzMDYzLTAuNzM5ODg0LTk0LjcwNTIwMiA4Ny4zMDYzNTgtMTcxLjY1MzE3OSAxOTguMjg5MDE3LTE3MS42NTMxOCAxMDUuODAzNDY4IDAgMTk5LjAyODkwMiA3Ny42ODc4NjEgMTk5LjAyODkwMiAxNzIuMzkzMDY0IDAgNTMuMjcxNjc2LTM0Ljc3NDU2NiAxMDAuNjI0Mjc3LTgxLjM4NzI4MyAxMzYuMTM4NzI4eiIgZmlsbD0iIzI4QzQ0NSIgcC1pZD0iMjgxMSI+PC9wYXRoPjwvc3ZnPg==" mode="aspectFill" />
+            <text class="label">微信</text>
+          </view>
+          <view class="py" bindtap="showSuccessToast">
+            <image class="py-icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNjc4NzA5MzQ1MjM5IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjM5MDAiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTY1Mi4xODkgMTE0LjYzNXMtNTUuODYtMjIuNjE0LTE0MC4yMzQtMjIuNjE0Yy04NC4zNyAwLTE0MC4yMyAyNS45MDMtMTQwLjIzIDI1LjkwM2wyODAuNTQ5IDI4NS40NDktMC4wODUtMjg4LjczOHoiIGZpbGw9IiNGQjU0NTMiIHAtaWQ9IjM5MDEiPjwvcGF0aD48cGF0aCBkPSJNODExLjIwMiAyMTcuNzk2Yy02MS45MjgtNTguNzI3LTEyMS44LTc5LjY0OS0xMjEuOC03OS42NDlsLTIuMDYgMzkyLjA3MiAyMTAuNDExLTE5OS4zMzJjMCAwLjA4NS0yNC41MzUtNTQuMzY0LTg2LjU1LTExMy4wOXoiIGZpbGw9IiM2NDY4RjEiIHAtaWQ9IjM5MDIiPjwvcGF0aD48cGF0aCBkPSJNOTA2LjQ5OCAzNjguNzc4TDYxNy4yMDUgNjQ1LjUzNWgyOTIuNjY3czIyLjk1LTU1LjExOSAyMi45NS0xMzguNDE5Yy0wLjA4Ny04My4yMTUtMjYuMzI0LTEzOC4zMzgtMjYuMzI0LTEzOC4zMzh6IiBmaWxsPSIjNTI4M0YwIiBwLWlkPSIzOTAzIj48L3BhdGg+PHBhdGggZD0iTTY5Ni42MiA4ODcuNjk3czU2LjgxMy0yMi44NDIgMTE4LjAzMy04MC42MDJjNjEuMjIzLTU3Ljc1NyA4My4xLTExMy40ODggODMuMS0xMTMuNDg4bC00MDkuMTMyLTEuOTQ2TDY5Ni42MiA4ODcuNjk3eiIgZmlsbD0iIzAwQjJGRSIgcC1pZD0iMzkwNCI+PC9wYXRoPjxwYXRoIGQ9Ik0zNzEuODA2IDkxMS4yMTNzNTUuODY0IDIyLjYxIDE0MC4yMzQgMjIuNjFjODQuNDU1IDAgMTQwLjIzNC0yNS45MDIgMTQwLjIzNC0yNS45MDJsLTI4MC41NDgtMjg1LjQ1IDAuMDggMjg4Ljc0MnoiIGZpbGw9IiM2NkQwMjAiIHAtaWQ9IjM5MDUiPjwvcGF0aD48cGF0aCBkPSJNMjI0LjQ4NCA4MDguMDQ3YzYxLjkzNCA1OC43MzIgMTIxLjgwNiA3OS42NSAxMjEuODA2IDc5LjY1bDIuMDU3LTM5Mi4wNzItMjEwLjQxMSAxOTkuMzNjMC4wODQtMC4wOCAyNC42MTkgNTQuMzY1IDg2LjU0OCAxMTMuMDkyeiIgZmlsbD0iIzlBRDEyMiIgcC1pZD0iMzkwNiI+PC9wYXRoPjxwYXRoIGQ9Ik0xMTQuMTM0IDM2OC43NzhzLTIyLjk1NiA1NS4xMDctMjIuOTU2IDEzOC4zNzhjMCA4My4yNzYgMjYuMjQ0IDEzOC4zNzkgMjYuMjQ0IDEzOC4zNzlsMjg5LjM3Mi0yNzYuNjcyaC0yOTIuNjZ2LTAuMDg1eiIgZmlsbD0iI0ZGQzcxQSIgcC1pZD0iMzkwNyI+PC9wYXRoPjxwYXRoIGQ9Ik0zMzkuMDcgMTM4LjE0N3MtNTYuODE0IDIyLjg0My0xMTguMDM0IDgwLjZjLTYxLjIyMiA1Ny43NTgtODMuMSAxMTMuNDk0LTgzLjEgMTEzLjQ5NGw0MDkuMTMyIDEuOTQyTDMzOS4wNyAxMzguMTQ3eiIgZmlsbD0iI0ZGNzYxMiIgcC1pZD0iMzkwOCI+PC9wYXRoPjwvc3ZnPg==" mode="aspectFill" />
+            <text class="label">朋友圈</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 轻提示 -->
+  <t-toast id="t-toast" />
+
+    <!-- 对话框 -->
+    <t-dialog t-class-confirm="confirmBtn" id="t-dialog" />
+</view>
