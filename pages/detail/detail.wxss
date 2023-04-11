@@ -42,7 +42,7 @@ page {
 .view3D {
   position: absolute;
   right: 5%;
-  bottom: 5%;
+  bottom: 8%;
   font-size: 25rpx;
   color: #DD9A04;
   display: flex;
@@ -61,7 +61,9 @@ page {
   font-size: 25rpx;
   box-sizing: border-box;
 }
-
+.info-detail {
+  font-size: 28rpx;
+}
 .info-card-head {
   display: flex;
   align-items: center;
