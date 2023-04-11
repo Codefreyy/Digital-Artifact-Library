@@ -34,14 +34,16 @@ Page({
   passwordIconTap() {
     this.setData({
       browseName: this.data.browseName === 'browse-off' ? 'browse' : 'browse-off',
-      inputType: this.data.browseName === 'browse-off' ? 'text' : 'password'
+      inputType: this.data.browseName === 'browse-off' ? 'text' : 'password',
+      'userForm.password': this.data.userForm.password
     })
   },
   // 确认密码可视切换
   passwordConfirmIconTap() {
     this.setData({
       browseConfirmName: this.data.browseConfirmName === 'browse-off' ? 'browse' : 'browse-off',
-      inputConfirmType: this.data.browseConfirmName === 'browse-off' ? 'text' : 'password'
+      inputConfirmType: this.data.browseConfirmName === 'browse-off' ? 'text' : 'password',
+      'userForm.confirm': this.data.userForm.confirm
     })
   },
   // 去登录

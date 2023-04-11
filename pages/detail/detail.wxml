@@ -13,7 +13,7 @@
   </view>
   <!-- 轮播图swiper -->
   <view class="swiper">
-    <t-swiper current="{{ current }}" autoplay="{{ autoplay }}" duration="{{ 500 }}" interval="{{ 5000 }}" navigation="{{ { type: 'dots-bar' } }}" list="{{artifectDetailInfo.image}}" t-class-nav="card-theme-nav" height="240" width="100%" bind:click="previewImage" data-img-list="{{artifectDetailInfo.image}}" data-index="{{current}}" bind:change="onChange" bindlongpress="longpress" />
+    <t-swiper current="{{ current }}" autoplay="{{ autoplay }}" duration="{{ 500 }}" interval="{{ 5000 }}" navigation="{{ { type: 'dots-bar' } }}" list="{{artifectDetailInfo.image}}" t-class-nav="card-theme-nav" height="40vh" width="100%" bind:click="previewImage" data-img-list="{{artifectDetailInfo.image}}" data-index="{{current}}" bind:change="onChange" bindlongpress="longpress" />
     <view class="view3D" bindtap="view3DTap" data-digital-model="{{artifectDetailInfo.digitalModel}}" data-digital-model-mtl="{{artifectDetailInfo.digitalModelMtl}}" wx:if="{{artifectDetailInfo.digitalModel}}">
       <t-icon name="layers" size="38rpx" color="#DD9A04" />
       <text>3D</text>
@@ -21,35 +21,38 @@
   </view>
 
   <!-- info -->
-  <view class="info-card" style="height: calc(100vh - 240px);">
-    <view class="info-card-head">
-      <view class="head-left">
-        <view class="title">
-          <view class="flag-3D" wx:if="{{artifectDetailInfo.digitalModel}}">
-            3D
+  <view class="info-card" style="height: 62vh;">
+    <view>
+      <view class="info-card-head">
+        <view class="head-left">
+          <view class="title">
+            <view class="flag-3D" wx:if="{{artifectDetailInfo.digitalModel}}">
+              3D
+            </view>
+            <text class="text">{{artifectDetailInfo.title}}</text>
           </view>
-          <text class="text">{{artifectDetailInfo.title}}</text>
+          <view class="detail">
+            <text class="dynasty">{{artifectDetailInfo.ear}}</text>
+            <view class="division">
+              ｜
+            </view>
+            <view class="No">
+              {{artifectDetailInfo.No}}
+            </view>
+          </view>
         </view>
-        <view class="detail">
-          <text class="dynasty">{{artifectDetailInfo.ear}}</text>
-          <view class="division">
-            ｜
-          </view>
-          <view class="No">
-            {{artifectDetailInfo.No}}
-          </view>
+        <view class="head-right">
+          <t-icon name="{{artifectDetailInfo.isLike ? 'heart-filled' : 'heart'}}" color="{{!artifectDetailInfo.isLike ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="like" />
+          <t-icon name="{{artifectDetailInfo.isCollect ? 'star-filled' : 'star'}}" color="{{!artifectDetailInfo.isCollect ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="collect" />
         </view>
       </view>
-      <view class="head-right">
-        <t-icon name="{{artifectDetailInfo.isLike ? 'heart-filled' : 'heart'}}" color="{{!artifectDetailInfo.isLike ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="like" />
-        <t-icon name="{{artifectDetailInfo.isCollect ? 'star-filled' : 'star'}}" color="{{!artifectDetailInfo.isCollect ? '#000000' : '#DD9A04'}}" size="48rpx" data-artifectid="{{artifectDetailInfo._id}}" data-index="{{index}}" catchtap="collect" />
+      <view class="info-card-body">
+        <view class="info-detail" style="max-height: 35vh; overflow-y: auto;">
+          {{artifectDetailInfo.desc}}
+        </view>
       </view>
     </view>
-    <view class="info-card-body">
-      <view class="info-detail" style="max-height: 400rpx; overflow-y: auto;">
-        {{artifectDetailInfo.desc}}
-      </view>
-    </view>
+
     <view class="info-card-foot">
       <view class="tag">
         <text class="label">分类</text>
@@ -78,6 +81,6 @@
   <!-- 轻提示 -->
   <t-toast id="t-toast" />
 
-    <!-- 对话框 -->
-    <t-dialog t-class-confirm="confirmBtn" id="t-dialog" />
+  <!-- 对话框 -->
+  <t-dialog t-class-confirm="confirmBtn" id="t-dialog" />
 </view>

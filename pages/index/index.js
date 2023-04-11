@@ -112,7 +112,7 @@ Page({
         }
       ], // 分类
       dynasty: [{
-          text: '新石器时代',
+          text: '新石器',
           value: 'neolithic',
           checkd: false,
         },

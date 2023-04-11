@@ -15,6 +15,7 @@ Page({
       artifectId: e.artifectId
     })
     this.getArtifectById()
+    console.log(1);
   },
   onChange(e) {
     const {
@@ -53,19 +54,24 @@ Page({
         item.isCollect = false
       }
     })
-
+    console.log('artifactinfo', temp[0]);
     this.setData({
       artifectDetailInfo: temp[0]
     })
   },
   // 查看3D
   view3DTap(e) {
+    console.log(e.currentTarget);
     const digitaModelInfo = {
       digitalModel: e.currentTarget.dataset.digitalModel,
       digitalModelMtl: e.currentTarget.dataset.digitalModelMtl
     }
+    console.log('digitalModelInfo', digitaModelInfo);
+    const isObj = digitaModelInfo.digitalModel?.includes('.obj')
+    // const isGltfOrGlb = digitaModelInfo.digitalModel.includes('.gltf') || digitaModelInfo.digitalModel.includes('.glb')
+
     wx.navigateTo({
-      url: `/pages/obj/index?digitaModelInfo=${encodeURIComponent(JSON.stringify(digitaModelInfo))}`,
+      url: `/pages/${isObj ? 'obj' : 'gltf'}/index?digitaModelInfo=${encodeURIComponent(JSON.stringify(digitaModelInfo))}`,
     })
   },
   // 图片预览

@@ -33,7 +33,7 @@ Page({
 
     this.setData({
       userInfo,
-      newInputValue: this.data.userInfo.username
+      newInputValue: this.data.userInfo?.username
     })
   },
   // 输入监听
@@ -51,14 +51,14 @@ Page({
   edit() {
     this.setData({
       isEdit: !this.data.isEdit,
-      newInputValue: this.data.userInfo.username
+      newInputValue: this.data.userInfo?.username
     })
   },
   // 取消修改
   cancel() {
     this.setData({
       isEdit: false,
-      'userInfo.username': this.data.userInfo.username
+      'userInfo.username': this.data.userInfo?.username
     })
   },
   // 确认修改
@@ -80,89 +80,7 @@ Page({
     })
     this.getUserInfo()
   },
-  // // 喜欢
-  // async like(e) {
-  //   const artifectId = e.currentTarget.dataset.artifectid
-  //   const index = e.currentTarget.dataset.index
 
-  //   let userLike = []
-
-  //   let currLike = this.data.artifects.find(item => item._id === artifectId).like
-
-  //   const hasLiked = currLike.includes(wx.getStorageSync('userId'))
-
-  //   if (hasLiked) {
-  //     currLike.splice(currLike.findIndex(item => item === wx.getStorageSync('userId')), 1, 'testIndex')
-  //   } else {
-  //     currLike.push(wx.getStorageSync('userId'))
-  //   }
-
-  //   await wx.cloud.callFunction({
-  //     name: 'updateArtifectInfo',
-  //     data: {
-  //       artifectId,
-  //       like: currLike
-  //     }
-  //   })
-
-  //   if (hasLiked) {
-  //     userLike.splice(userLike.findIndex(item => item._id === artifectId), 1)
-  //   } else {
-  //     userLike.push(this.data.artifectList[index])
-  //   }
-
-  //   await wx.cloud.callFunction({
-  //     name: 'updateUserInfo',
-  //     data: {
-  //       userId: wx.getStorageSync('userId'),
-  //       like: userLike
-  //     }
-  //   })
-
-  //   await this.getUserInfo()
-  // },
-  // // 收藏
-  // async collect(e) {
-  //   const artifectId = e.currentTarget.dataset.artifectid
-
-  //   let currCollection = this.data.artifects.find(item => item._id === artifectId).collection
-
-  //   const hasCollect = currCollection.includes(wx.getStorageSync('userId'))
-
-  //   let userCollection = []
-
-  //   if (hasCollect) {
-  //     currCollection.splice(currCollection.findIndex(item => item === wx.getStorageSync('userId')), 1, 'testIndex')
-  //   } else {
-  //     currCollection.push(wx.getStorageSync('userId'))
-  //   }
-
-  //   await wx.cloud.callFunction({
-  //     name: 'updateArtifectInfo',
-  //     data: {
-  //       artifectId,
-  //       collection: currCollection
-  //     }
-  //   })
-
-  //   if (hasCollect) {
-  //     userCollection.splice(userCollection.findIndex(item => item._id === artifectId), 1)
-  //   } else {
-  //     userCollection.push(this.data.artifectList[index])
-  //   }
-
-  //   await wx.cloud.callFunction({
-  //     name: 'updateUserInfo',
-  //     data: {
-  //       userId: wx.getStorageSync('userId'),
-  //       collection: userCollection
-  //     }
-  //   })
-
-  //   await this.getUserInfo()
-
-  // },
-  // 我的喜欢
   likeTap() {
     this.setData({
       isShowlikeCard: true
