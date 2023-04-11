@@ -46,6 +46,21 @@ Page({
           checkd: false,
         },
         {
+          "text": "陶瓷器",
+          "value": "ceramics",
+          "checked": false
+        },
+        {
+          "text": "石器",
+          "value": "stone_tools",
+          "checked": false
+        },
+        {
+          "text": "骨器",
+          "value": "bone_tools",
+          "checked": false
+        },
+        {
           text: '珐琅器',
           value: 'Enamelware',
           checkd: false,
