@@ -2,6 +2,7 @@
 .imgs {
   height: 55rpx;
   width: 55rpx;
+  margin-left: 20rpx
 }
 
 .nav-gation {
@@ -14,16 +15,20 @@
   justify-content: space-between;
 }
 
+
 /* search */
 .search-warpper {
   margin-bottom: 25rpx;
   position: relative;
 }
 
+.search-warpper text {
+  color: #656462
+}
+
 .search {
   border-radius: 40rpx;
   background-color: #ffffff;
-  border: 1px solid #EBEBEB;
   display: flex;
   align-items: center;
   width: 100%;
@@ -140,7 +145,7 @@
   width: 100%;
   border-radius: 40rpx;
   background-color: #FDFBF5;
-  padding: 20rpx 40rpx;
+  padding: 0rpx 40rpx;
   font-size: 25rpx;
   box-sizing: border-box;
 }
@@ -151,7 +156,6 @@
   justify-content: space-between;
   position: relative;
   height: 70rpx;
-  box-shadow: 0px 20rpx 20rpx -20rpx gray;
 }
 
 .number {

@@ -15,7 +15,6 @@ Page({
       artifectId: e.artifectId
     })
     this.getArtifectById()
-    console.log(1);
   },
   onChange(e) {
     const {
@@ -28,6 +27,10 @@ Page({
   },
   // 获取文物信息(ById)
   async getArtifectById() {
+    wx.showLoading({
+      title: '文物加载中...',
+      mask: true
+    })
     const {
       result: {
         artifect
@@ -54,10 +57,10 @@ Page({
         item.isCollect = false
       }
     })
-    console.log('artifactinfo', temp[0]);
     this.setData({
       artifectDetailInfo: temp[0]
     })
+    wx.hideLoading()
   },
   // 查看3D
   view3DTap(e) {

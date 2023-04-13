@@ -269,7 +269,7 @@ Page({
   onScroll(e) {
     this.setData({
       scrollTop: e.detail.scrollTop,
-      backTopVisible: e.detail.scrollTop > 500
+      backTopVisible: e.detail.scrollTop > 0
     })
   },
   // 获取所有文物信息
